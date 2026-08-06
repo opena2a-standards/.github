@@ -9,7 +9,7 @@
 Open specifications for AI agent security: identity, trust credentials, threat models, behavioral governance, and the conformance suites that test them. Vendor-neutral. Apache 2.0 unless noted per repo.
 
 - [Agent Identity Protocol (AIP)](https://github.com/opena2a-standards/agent-identity-protocol): open standard for AI agent identity, capabilities, and trust.
-- [did:opena2a](https://github.com/opena2a-standards/did-method-opena2a): registry-mediated DID method for agents and agent infrastructure. Filed with the W3C DID Method Registry ([did-extensions#717](https://github.com/w3c/did-extensions/pull/717), pending review).
+- [did:opena2a](https://github.com/opena2a-standards/did-method-opena2a): registry-mediated DID method for agents and agent infrastructure. Registered in the W3C DID Extensions registry ([did-extensions#717](https://github.com/w3c/did-extensions/pull/717), merged 2026-07-04).
 - [Agent Trust Protocol (ATP)](https://github.com/opena2a-standards/agent-trust-protocol): open standard for verifiable trust assertions about AI agents.
 - [ATX](https://github.com/opena2a-standards/atx-spec): Agent Trust eXtension credential format and protocol architecture.
 - [Agent Authorization Protocol (AAP)](https://github.com/opena2a-standards/agent-authorization-protocol): scoped, attested authorization; credentials never enter the agent's context.

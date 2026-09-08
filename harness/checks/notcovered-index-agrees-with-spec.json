@@ -1,0 +1,20 @@
+{
+  "id": "notcovered-index-agrees-with-spec",
+  "sweep": "SW-31",
+  "home": "atx-conformance-coverage",
+  "kind": "citation-set-equal",
+  "title": "Every notCovered item cites a core.md section, and the set of sections equals the gaps core.md 12 names.",
+  "params": {
+    "anchor_regex": "^\\*\\*Coverage\\.\\*\\*",
+    "cite_regex": "§(\\d+(?:\\.\\d+)*)"
+  },
+  "inspect": [
+    {
+      "repo": "atx-conformance",
+      "file": "conformance.json",
+      "path": "notCovered[].item",
+      "cite_regex": "[Ss]ection (\\d+(?:\\.\\d+)*)"
+    }
+  ],
+  "fix": "Give each notCovered item its core.md section; keep the Coverage paragraph and the list naming the same sections."
+}

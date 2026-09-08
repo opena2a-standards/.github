@@ -1,0 +1,9 @@
+{
+  "id": "trust-score-scale",
+  "repo": "agent-trust-protocol",
+  "file": "ATP-SPEC.md",
+  "heading": "^### 4\\.1 Trust Levels",
+  "shape": "block",
+  "marker": "<!-- opena2a-definition: trust-score-scale -->",
+  "description": "The trust score scale and the exceptions the family carries (ATX 1.1 wire 0-100)."
+}

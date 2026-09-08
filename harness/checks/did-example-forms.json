@@ -1,0 +1,125 @@
+{
+  "id": "did-example-forms",
+  "sweep": "SW-26",
+  "home": "did-syntax",
+  "kind": "json-path-grammar",
+  "title": "Every did:opena2a literal follows the 3.1 ABNF, carries no percent-encoding, and uses a registered resource type (3.2).",
+  "params": {
+    "value_regex": "^did:opena2a:[a-z][a-z_]*:[A-Za-z0-9._\\-/@:]+(?:#[A-Za-z0-9._\\-/@]+)?$",
+    "registry": {
+      "home": "did-resource-types",
+      "column": "Resource type",
+      "extract": "^did:opena2a:([a-z][a-z_]*):"
+    }
+  },
+  "inspect": [
+    {
+      "repo": "atx-spec",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "agent-identity-protocol",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "agent-trust-protocol",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "agent-authorization-protocol",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "did-method-opena2a",
+      "files": [
+        "did-method-opena2a.md"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\.",
+      "exclude_sections": [
+        "^### 3\\.1\\.1 Relationship"
+      ],
+      "note": "3.1.1 states the percent-encoded strict equivalent on purpose; the signed form is the unescaped one"
+    },
+    {
+      "repo": "did-method-opena2a",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\.",
+      "exclude_files": [
+        "did-method-opena2a.md"
+      ],
+      "may_be_empty": true,
+      "note": "the remainder of the repository after the spec file; may hold no other document"
+    },
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "atp-conformance",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "aip-conformance",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    },
+    {
+      "repo": "aap-conformance",
+      "files": [
+        "*.md",
+        "**/*.md",
+        "**/*.json"
+      ],
+      "literal_regex": "(did:opena2a:[^\\s`\\\"'),;|<>\\\\]+)",
+      "exclude_regex": "[{}<>\\[\\]]|:$|\\.\\.\\."
+    }
+  ],
+  "fix": "Use the unescaped form and a registered resource type; register a new type in did-method 3.2 first."
+}

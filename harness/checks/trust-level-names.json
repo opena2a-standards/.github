@@ -1,0 +1,56 @@
+{
+  "id": "trust-level-names",
+  "sweep": "SW-01",
+  "home": "trust-levels",
+  "kind": "table-matches-registry",
+  "title": "Every trust level name and number the family states is the ATP 4.1 pair.",
+  "params": {
+    "columns": [
+      "Level",
+      "Name"
+    ]
+  },
+  "inspect": [
+    {
+      "repo": "agent-identity-protocol",
+      "file": "AIP-SPEC.md",
+      "type": "table",
+      "heading": "^### 6\\.2 ",
+      "columns": [
+        "Level",
+        "Name"
+      ],
+      "relation": "equal",
+      "if_present": true,
+      "note": "RED while AIP 6.2 carries a Level/Name table that differs from ATP 4.1; GREEN once 6.2 is the behavioral tier table (no Level column) or agrees"
+    },
+    {
+      "repo": "atx-spec",
+      "files": [
+        "*.md"
+      ],
+      "type": "regex-pairs",
+      "regex": "[Tt]rust level (\\d) \\(([A-Z][a-z]+)\\)",
+      "relation": "subset"
+    },
+    {
+      "repo": "agent-authorization-protocol",
+      "files": [
+        "*.md"
+      ],
+      "type": "regex-pairs",
+      "regex": "[Tt]rust level (\\d) \\(([A-Z][a-z]+)\\)",
+      "relation": "subset"
+    },
+    {
+      "repo": "did-method-opena2a",
+      "files": [
+        "*.md"
+      ],
+      "type": "regex-pairs",
+      "regex": "[Tt]rust level (\\d) \\(([A-Z][a-z]+)\\)",
+      "relation": "subset"
+    }
+  ],
+  "fix": "AIP 6.2 becomes the behavioral tier table (field behaviorTier) and cites ATP 4.1 for trust levels; prose pairs use the ATP names."
+}

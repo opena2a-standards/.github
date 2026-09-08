@@ -1,0 +1,25 @@
+{
+  "id": "dead-field-not-required",
+  "sweep": "SW-07",
+  "home": "atx-tbs-exclusions",
+  "kind": "json-required-excludes",
+  "title": "A schema property described as a dead field is not in required[].",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "atx-spec",
+      "files": [
+        "schemas/atx-credential-v1.1.schema.json"
+      ],
+      "description_regex": "^Dead field"
+    },
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "schemas/vendor/atx-spec/atx-credential-v1.1.schema.json"
+      ],
+      "description_regex": "^Dead field"
+    }
+  ],
+  "fix": "Remove transparencyLogIndex from required[] in atx-spec (the field is already outside the TBS), then re-pin the vendored copy in atx-conformance."
+}

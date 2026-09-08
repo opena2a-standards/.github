@@ -1,0 +1,9 @@
+{
+  "id": "governance-enforcement",
+  "repo": "agent-governance-spec",
+  "file": "specification.md",
+  "heading": "^### 1\\.2 Scope",
+  "shape": "prose",
+  "marker": "<!-- opena2a-definition: governance-enforcement -->",
+  "description": "Governance declares intent; runtime enforcement is out of the governance spec's scope."
+}

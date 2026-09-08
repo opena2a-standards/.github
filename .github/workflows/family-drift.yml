@@ -1,0 +1,22 @@
+name: family-drift
+
+# The family verdict: every check, any drift fails. Runs daily, on demand,
+# and on every push to main of this repository (a check-data change is a
+# family event). Never on pull requests; the PR gate here is self-test.
+
+on:
+  schedule:
+    - cron: "23 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  family:
+    uses: opena2a-standards/.github/.github/workflows/spec-drift.yml@main
+    with:
+      scope: family
+      caller: opena2a-standards/.github

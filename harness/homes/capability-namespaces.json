@@ -1,0 +1,9 @@
+{
+  "id": "capability-namespaces",
+  "repo": "agent-identity-protocol",
+  "file": "AIP-SPEC.md",
+  "heading": "^### 4\\.2 Reserved Namespaces",
+  "shape": "table",
+  "marker": "<!-- opena2a-definition: capability-namespaces -->",
+  "description": "The reserved capability namespaces (registry generated from this table)."
+}

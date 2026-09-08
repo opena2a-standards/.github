@@ -1,0 +1,9 @@
+{
+  "id": "clock-skew",
+  "repo": "agent-trust-protocol",
+  "file": "ATP-SPEC.md",
+  "heading": "^### 10\\.2 Trust Proof Validity",
+  "shape": "block",
+  "marker": "<!-- opena2a-definition: clock-skew -->",
+  "description": "The one clock-skew bound every verifier in the family tolerates."
+}

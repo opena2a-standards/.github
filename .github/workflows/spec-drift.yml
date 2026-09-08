@@ -1,0 +1,159 @@
+name: spec-drift
+
+# Reusable spec-versus-verifier drift gate for the opena2a-standards family.
+# A family repository calls it with one line:
+#
+#   jobs:
+#     spec-drift:
+#       uses: opena2a-standards/.github/.github/workflows/spec-drift.yml@main
+#
+# Every family repository is checked out at main, the caller at the commit
+# under test, and harness/spec_drift.py runs every check. With scope=caller
+# (the default) the job fails only on checks whose home or inspected
+# documents include the caller's own files; other drift is reported as a
+# family warning. With scope=family (the .github repository's own daily run)
+# any drift fails. Exit 2 is a harness error and also fails: a precondition
+# the gate cannot find is never a skip. See HARNESS.md.
+
+on:
+  workflow_call:
+    inputs:
+      scope:
+        description: "caller (fail only on the caller's drift) or family (fail on any drift)"
+        type: string
+        default: caller
+      caller:
+        description: "owner/repo of the calling repository"
+        type: string
+        default: ${{ github.repository }}
+
+permissions:
+  contents: read
+
+jobs:
+  spec-drift:
+    name: spec-drift (${{ inputs.scope }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CALLER: ${{ inputs.caller }}
+      SCOPE: ${{ inputs.scope }}
+    steps:
+      - name: Check out the harness
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/.github
+          ref: main
+          path: .harness
+
+      - name: Check out atx-spec at main
+        if: inputs.caller != 'opena2a-standards/atx-spec'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/atx-spec
+          ref: main
+          path: family/atx-spec
+      - name: Check out agent-identity-protocol at main
+        if: inputs.caller != 'opena2a-standards/agent-identity-protocol'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/agent-identity-protocol
+          ref: main
+          path: family/agent-identity-protocol
+      - name: Check out agent-trust-protocol at main
+        if: inputs.caller != 'opena2a-standards/agent-trust-protocol'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/agent-trust-protocol
+          ref: main
+          path: family/agent-trust-protocol
+      - name: Check out agent-authorization-protocol at main
+        if: inputs.caller != 'opena2a-standards/agent-authorization-protocol'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/agent-authorization-protocol
+          ref: main
+          path: family/agent-authorization-protocol
+      - name: Check out did-method-opena2a at main
+        if: inputs.caller != 'opena2a-standards/did-method-opena2a'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/did-method-opena2a
+          ref: main
+          path: family/did-method-opena2a
+      - name: Check out agent-governance-spec at main
+        if: inputs.caller != 'opena2a-standards/agent-governance-spec'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/agent-governance-spec
+          ref: main
+          path: family/agent-governance-spec
+      - name: Check out atx-conformance at main
+        if: inputs.caller != 'opena2a-standards/atx-conformance'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/atx-conformance
+          ref: main
+          path: family/atx-conformance
+      - name: Check out atp-conformance at main
+        if: inputs.caller != 'opena2a-standards/atp-conformance'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/atp-conformance
+          ref: main
+          path: family/atp-conformance
+      - name: Check out aip-conformance at main
+        if: inputs.caller != 'opena2a-standards/aip-conformance'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/aip-conformance
+          ref: main
+          path: family/aip-conformance
+      - name: Check out aap-conformance at main
+        if: inputs.caller != 'opena2a-standards/aap-conformance'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: opena2a-standards/aap-conformance
+          ref: main
+          path: family/aap-conformance
+
+      - name: Check out the caller at the commit under test
+        if: inputs.scope == 'caller'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: family/caller
+
+      - name: Place the caller checkout under its family name
+        if: inputs.scope == 'caller'
+        run: |
+          set -euo pipefail
+          short="${CALLER##*/}"
+          rm -rf "family/$short"
+          mv family/caller "family/$short"
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: Run the drift checks
+        id: run
+        run: |
+          set -uo pipefail
+          if [ "$SCOPE" = "family" ]; then
+            python3 .harness/harness/spec_drift.py --family-dir family --scope family --report-json report.json --report-md report.md
+          else
+            python3 .harness/harness/spec_drift.py --family-dir family --scope caller --caller "$CALLER" --report-json report.json --report-md report.md
+          fi
+          rc=$?
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          exit "$rc"
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: spec-drift-report
+          path: |
+            report.json
+            report.md
+          if-no-files-found: error

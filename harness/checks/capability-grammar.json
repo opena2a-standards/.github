@@ -1,0 +1,66 @@
+{
+  "id": "capability-grammar",
+  "sweep": "SW-03",
+  "home": "capability-grammar",
+  "kind": "json-path-grammar",
+  "title": "Every capability string in fixtures and spec text follows the AIP 4.1 grammar (namespace, colon, action) with a reserved or domain-prefixed namespace (AIP 4.2).",
+  "params": {
+    "value_regex": "^(?:[a-z0-9-]+(?:\\.[a-z0-9-]+)+/)?[a-z][a-z0-9_]*:[a-z][a-z0-9_]*$",
+    "registry": {
+      "home": "capability-namespaces",
+      "column": "Namespace",
+      "extract": "^([a-z][a-z0-9_]*):",
+      "exempt_regex": "^[a-z0-9-]+(?:\\.[a-z0-9-]+)+/"
+    }
+  },
+  "inspect": [
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "fixtures/*.json"
+      ],
+      "path": "atx.capabilities[]"
+    },
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "fixtures/*.json"
+      ],
+      "path": "atx.declaredPurpose.capabilityJustification",
+      "keys": true,
+      "may_be_empty": true,
+      "note": "declaredPurpose is optional; a fixture without it yields no keys"
+    },
+    {
+      "repo": "atx-spec",
+      "files": [
+        "core.md"
+      ],
+      "literal_regex": "`([a-z_]+:[a-z_*]+)`",
+      "sections": [
+        "^#### 1\\.5\\.4 Breadth"
+      ],
+      "note": "1.5.2 (taskScopes namespace:objective) and 1.5.3 (the taskScope vocabulary) are excluded by section: a different grammar"
+    },
+    {
+      "repo": "atx-spec",
+      "files": [
+        "core.md"
+      ],
+      "literal_regex": "\"capabilities\":\\s*\\[([^\\]]*)\\]",
+      "sections": [
+        "^### 1\\.1 ATX schema"
+      ],
+      "split_regex": "[\\s\",]+",
+      "note": "the capabilities array of the section 1.1 example only; justification values are task scopes, a different grammar"
+    },
+    {
+      "repo": "agent-authorization-protocol",
+      "files": [
+        "AAP-SPEC.md"
+      ],
+      "literal_regex": "e\\.g\\. `([a-z_]+:[a-z_]+)`"
+    }
+  ],
+  "fix": "Use AIP 4.2 namespaces in fixtures and examples; add the namespace core.md 1.5.4 uses to AIP 4.2 before citing it."
+}

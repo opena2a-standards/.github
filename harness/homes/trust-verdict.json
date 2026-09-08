@@ -1,0 +1,9 @@
+{
+  "id": "trust-verdict",
+  "repo": "agent-trust-protocol",
+  "file": "ATP-SPEC.md",
+  "heading": "^### 4\\.2 Trust Proof Format",
+  "shape": "enum",
+  "marker": "<!-- opena2a-definition: trust-verdict -->",
+  "description": "The proof-outcome verdict enum (an outcome axis, not a level-name axis)."
+}

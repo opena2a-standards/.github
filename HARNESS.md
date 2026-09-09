@@ -31,7 +31,11 @@ family is reported as a warning in the job summary. The full report is the
 `spec-drift-report` artifact (`report.json`, `report.md`).
 
 The family verdict, where any drift fails, runs daily in this repository
-(`family-drift.yml`). The `@main` reference is deliberate: check data updates
+(`family-drift.yml`).
+
+Observed on the first caller (did-method-opena2a, 2026-09-09): the check run is named
+`spec-drift / spec-drift (caller)` and completes in about twenty seconds; that is the
+context name to require once a repository's main is protected. The `@main` reference is deliberate: check data updates
 centrally, in one place, and reaches every caller on its next run.
 
 ## Run it locally

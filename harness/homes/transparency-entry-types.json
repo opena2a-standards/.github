@@ -1,0 +1,9 @@
+{
+  "id": "transparency-entry-types",
+  "repo": "agent-trust-protocol",
+  "file": "ATP-SPEC.md",
+  "heading": "^#### 5\\.1\\.1 Entry type registry",
+  "shape": "block",
+  "marker": "<!-- opena2a-definition: transparency-entry-types -->",
+  "description": "The one registry of transparency-log entry types (name, byte, data members, since); registries/transparency-entry-types.json is generated from it."
+}

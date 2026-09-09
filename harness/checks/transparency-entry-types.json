@@ -1,0 +1,21 @@
+{
+  "id": "transparency-entry-types",
+  "sweep": "SW-40",
+  "home": "transparency-entry-types",
+  "kind": "regex-count",
+  "require_marker": true,
+  "title": "One transparency-log entry-type registry lives in ATP 5.1.1 and the ATX registry row cites it.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "atx-spec",
+      "files": [
+        "core.md"
+      ],
+      "regex": "ATP (?:§|Section )5\\.1(?:\\.1)?|registries/transparency-entry-types\\.json",
+      "min": 1,
+      "why": "core.md section 14 lists the transparency-log entry types as a registry consideration; that row must cite the ATP 5.1.1 registry (or its generated JSON) instead of naming the types itself"
+    }
+  ],
+  "fix": "In core.md section 14, replace the entry-type row's own list with a citation of ATP Section 5.1.1 (registries/transparency-entry-types.json); the ATP home block already carries the marker."
+}

@@ -59,6 +59,13 @@ ATP = """# ATP
 5. **Semantic validation:**
    - `verdict` MUST be one of: `passed`, `warning`, `blocked`, `listed`, `verified`, `unknown`
 
+#### 5.1.1 Entry type registry
+
+<!-- opena2a-definition: transparency-entry-types -->
+| Name | Byte | Data members | Since |
+|------|------|--------------|-------|
+| `trust_proof_issued` | 0x01 | agentDid | 1.0.0-rc1 |
+
 ### 10.2 Trust Proof Validity
 
 <!-- opena2a-definition: clock-skew -->
@@ -146,6 +153,7 @@ Every credential carries both families; see AAP Section 9.4.
 ## 14. Registry considerations
 
 | Capability tokens | `namespace:action` grammar | Governed by AIP Section 4.2 and its generated registry. |
+| Transparency-log entry types | registered name and byte | ATP Section 5.1.1 and its generated registry. |
 """
 
 ATX_SCHEMA = {
@@ -291,6 +299,9 @@ PLANTS = {
     "governance-enforcement-claims": lambda r: mutate(r, "agent-governance-spec/specification.md",
                                                       "OASB-2 declares intent.",
                                                       "OASB-2 declares intent; the broker and FGA engine hold the agent to it."),
+    "transparency-entry-types": lambda r: mutate(r, "atx-spec/core.md",
+                                                 "ATP Section 5.1.1 and its generated registry.",
+                                                 "issuance, revocation, build attestation. ATP-SPEC revision."),
     "clock-skew-bound": lambda r: mutate(r, "agent-trust-protocol/ATP-SPEC.md",
                                          "<!-- opena2a-definition: clock-skew -->\n", ""),
 }

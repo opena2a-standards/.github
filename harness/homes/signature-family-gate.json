@@ -1,0 +1,9 @@
+{
+  "id": "signature-family-gate",
+  "repo": "agent-authorization-protocol",
+  "file": "AAP-SPEC.md",
+  "heading": "^### 9\\.4 Multi-Signature Form",
+  "shape": "prose",
+  "marker": "<!-- opena2a-definition: signature-family-gate -->",
+  "description": "Every declared signature entry verifies; an ML-DSA-65 entry requires both families (HYBRID_INCOMPLETE)."
+}

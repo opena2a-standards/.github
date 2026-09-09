@@ -1,0 +1,71 @@
+{
+  "id": "governance-enforcement-claims",
+  "sweep": "SW-13",
+  "home": "governance-enforcement",
+  "kind": "regex-count",
+  "title": "No spec claims the broker or the FGA engine enforces the governance file while nothing reads it.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "atx-spec",
+      "files": [
+        "*.md",
+        "**/*.md"
+      ],
+      "regex": "broker and FGA engine hold|enforced by the broker|governanceHash",
+      "expect": 0,
+      "why": "governance is declared intent (ABGS 1.2); no broker or engine reads it today"
+    },
+    {
+      "repo": "agent-identity-protocol",
+      "files": [
+        "*.md",
+        "**/*.md"
+      ],
+      "regex": "broker and FGA engine hold|enforced by the broker|governanceHash",
+      "expect": 0,
+      "why": "governance is declared intent (ABGS 1.2); no broker or engine reads it today"
+    },
+    {
+      "repo": "agent-trust-protocol",
+      "files": [
+        "*.md",
+        "**/*.md"
+      ],
+      "regex": "broker and FGA engine hold|enforced by the broker|governanceHash",
+      "expect": 0,
+      "why": "governance is declared intent (ABGS 1.2); no broker or engine reads it today"
+    },
+    {
+      "repo": "agent-authorization-protocol",
+      "files": [
+        "*.md",
+        "**/*.md"
+      ],
+      "regex": "broker and FGA engine hold|enforced by the broker|governanceHash",
+      "expect": 0,
+      "why": "governance is declared intent (ABGS 1.2); no broker or engine reads it today"
+    },
+    {
+      "repo": "did-method-opena2a",
+      "files": [
+        "*.md",
+        "**/*.md"
+      ],
+      "regex": "broker and FGA engine hold|enforced by the broker|governanceHash",
+      "expect": 0,
+      "why": "governance is declared intent (ABGS 1.2); no broker or engine reads it today"
+    },
+    {
+      "repo": "agent-governance-spec",
+      "files": [
+        "*.md",
+        "**/*.md"
+      ],
+      "regex": "broker and FGA engine hold|enforced by the broker|governanceHash",
+      "expect": 0,
+      "why": "governance is declared intent (ABGS 1.2); no broker or engine reads it today"
+    }
+  ],
+  "fix": "State enforcement in the future tense until the machine-readable governance block ships."
+}

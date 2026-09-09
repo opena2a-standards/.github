@@ -1,0 +1,38 @@
+{
+  "id": "registry-home-terms",
+  "sweep": "SW-03",
+  "home": "capability-namespaces",
+  "kind": "regex-count",
+  "title": "No spec still points a shared definition at a product repo or restates a home in its own words.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "atx-spec",
+      "files": [
+        "*.md"
+      ],
+      "regex": "capability registry in AIM",
+      "expect": 0,
+      "why": "the capability registry home is AIP 4.2 and its generated registry, not a product repo"
+    },
+    {
+      "repo": "atx-spec",
+      "files": [
+        "*.md"
+      ],
+      "regex": "`namespace:operation`",
+      "expect": 0,
+      "why": "the grammar term is namespace:action (AIP 4.1)"
+    },
+    {
+      "repo": "agent-trust-protocol",
+      "files": [
+        "*.md"
+      ],
+      "regex": "URL-encoded if it contains special characters",
+      "expect": 0,
+      "why": "the signed DID form is did-method 3.1.1 (unescaped); cite it instead of restating"
+    }
+  ],
+  "fix": "Replace each sentence with a citation of the home section."
+}

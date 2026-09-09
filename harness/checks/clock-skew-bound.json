@@ -1,0 +1,39 @@
+{
+  "id": "clock-skew-bound",
+  "sweep": "SW-40",
+  "home": "clock-skew",
+  "kind": "regex-count",
+  "require_marker": true,
+  "title": "One clock-skew bound lives in ATP 10.2 and every freshness rule cites it.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "agent-identity-protocol",
+      "files": [
+        "AIP-SPEC.md"
+      ],
+      "regex": "ATP (?:§|Section )10\\.2",
+      "min": 1,
+      "why": "AIP 5.1 freshness must cite the family skew bound"
+    },
+    {
+      "repo": "agent-authorization-protocol",
+      "files": [
+        "AAP-BROKER-PROFILE.md"
+      ],
+      "regex": "ATP (?:§|Section )10\\.2",
+      "min": 1,
+      "why": "the broker profile's bounded clock skew must cite the family skew bound"
+    },
+    {
+      "repo": "atx-spec",
+      "files": [
+        "core.md"
+      ],
+      "regex": "ATP (?:§|Section )10\\.2",
+      "min": 1,
+      "why": "core.md 1.3 step 2 expiry must cite the family skew bound"
+    }
+  ],
+  "fix": "Add the definition block under ATP 10.2 ({\"maxSkewSeconds\": 60}) and cite it from AIP 5.1, the broker profile, and core.md 1.3."
+}

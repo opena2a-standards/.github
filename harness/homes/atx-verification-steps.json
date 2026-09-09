@@ -1,0 +1,9 @@
+{
+  "id": "atx-verification-steps",
+  "repo": "atx-spec",
+  "file": "core.md",
+  "heading": "^### 1\\.3 Local verification algorithm",
+  "shape": "prose",
+  "marker": "<!-- opena2a-definition: atx-verification-steps -->",
+  "description": "The ATX local verification algorithm, including step 7 (distinct signer authorities)."
+}

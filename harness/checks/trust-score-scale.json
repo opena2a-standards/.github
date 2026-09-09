@@ -1,0 +1,28 @@
+{
+  "id": "trust-score-scale",
+  "sweep": "SW-01",
+  "home": "trust-score-scale",
+  "kind": "json-path-grammar",
+  "require_marker": true,
+  "title": "One score scale (0.0-1.0), with the ATX 1.1 wire encoding recorded as an exception in the home block.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "atx-spec",
+      "files": [
+        "schemas/atx-credential-v1.1.schema.json"
+      ],
+      "path": "properties.trustScore.maximum",
+      "value_from_home": "scale.max"
+    },
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "schemas/vendor/atx-spec/atx-credential-v1.1.schema.json"
+      ],
+      "path": "properties.trustScore.maximum",
+      "value_from_home": "scale.max"
+    }
+  ],
+  "fix": "Add the definition block under ATP 4.1: {\"scale\": {\"min\": 0.0, \"max\": 1.0}, \"exceptions\": [{\"repo\": \"atx-spec\", ...}]}."
+}

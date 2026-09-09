@@ -1,0 +1,9 @@
+{
+  "id": "capability-grammar",
+  "repo": "agent-identity-protocol",
+  "file": "AIP-SPEC.md",
+  "heading": "^### 4\\.1 Capability Format",
+  "shape": "block",
+  "marker": "<!-- opena2a-definition: capability-grammar -->",
+  "description": "The namespace:action capability grammar and the domain-prefixed custom rule."
+}

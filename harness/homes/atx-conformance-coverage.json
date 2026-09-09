@@ -1,0 +1,9 @@
+{
+  "id": "atx-conformance-coverage",
+  "repo": "atx-spec",
+  "file": "core.md",
+  "heading": "^## 12\\. Conformance",
+  "shape": "prose",
+  "marker": "<!-- opena2a-definition: atx-conformance-coverage -->",
+  "description": "Which normative requirements the suite does not exercise; notCovered is its index."
+}

@@ -1,0 +1,16 @@
+{
+  "org": "opena2a-standards",
+  "ref": "main",
+  "repos": [
+    "atx-spec",
+    "agent-identity-protocol",
+    "agent-trust-protocol",
+    "agent-authorization-protocol",
+    "did-method-opena2a",
+    "agent-governance-spec",
+    "atx-conformance",
+    "atp-conformance",
+    "aip-conformance",
+    "aap-conformance"
+  ]
+}

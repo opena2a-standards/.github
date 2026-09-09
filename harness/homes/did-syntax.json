@@ -1,0 +1,9 @@
+{
+  "id": "did-syntax",
+  "repo": "did-method-opena2a",
+  "file": "did-method-opena2a.md",
+  "heading": "^### 3\\.1 Syntax",
+  "shape": "block",
+  "marker": "<!-- opena2a-definition: did-syntax -->",
+  "description": "The did:opena2a ABNF and the unescaped signed form (3.1.1)."
+}

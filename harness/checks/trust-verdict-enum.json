@@ -1,0 +1,33 @@
+{
+  "id": "trust-verdict-enum",
+  "sweep": "SW-01",
+  "home": "trust-verdict",
+  "kind": "enum-equal",
+  "title": "The verdict enum reads the same in ATP 4.2 prose, ATP 4.4 step 5, and the trust-proof schema.",
+  "params": {
+    "sources": [
+      {
+        "repo": "agent-trust-protocol",
+        "file": "ATP-SPEC.md",
+        "type": "md-backticks",
+        "anchor_regex": "`verdict` is one of",
+        "stop_regex": ";"
+      },
+      {
+        "repo": "agent-trust-protocol",
+        "file": "ATP-SPEC.md",
+        "type": "md-backticks",
+        "anchor_regex": "`verdict` MUST be one of:",
+        "stop_regex": "\\n"
+      },
+      {
+        "repo": "agent-trust-protocol",
+        "file": "schemas/trust-proof-v1.schema.json",
+        "type": "json",
+        "path": "properties.verdict.enum"
+      }
+    ]
+  },
+  "inspect": [],
+  "fix": "Edit the enum in ATP 4.2 and let 4.4 and the schema follow."
+}

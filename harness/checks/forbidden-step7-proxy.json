@@ -1,0 +1,29 @@
+{
+  "id": "forbidden-step7-proxy",
+  "sweep": "SW-31",
+  "home": "atx-verification-steps",
+  "kind": "regex-count",
+  "title": "No reference verifier implements step 7 as an issuerChain length test.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "verifiers/python/verify.py"
+      ],
+      "regex": "len\\(issuer_chain\\)\\s*<\\s*2",
+      "expect": 0,
+      "why": "core.md 1.3 step 7 counts distinct verified signer authorities; chain length is the proxy the spec forbids"
+    },
+    {
+      "repo": "atx-conformance",
+      "files": [
+        "verifiers/go/verify.go"
+      ],
+      "regex": "len\\(a\\.IssuerChain\\)\\s*<\\s*2",
+      "expect": 0,
+      "why": "core.md 1.3 step 7 counts distinct verified signer authorities; chain length is the proxy the spec forbids"
+    }
+  ],
+  "fix": "Count distinct authorities whose signatures verified (the two-authority fixture in atx-conformance is the proof)."
+}

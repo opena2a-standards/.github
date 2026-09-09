@@ -1,0 +1,9 @@
+{
+  "id": "did-resource-types",
+  "repo": "did-method-opena2a",
+  "file": "did-method-opena2a.md",
+  "heading": "^### 3\\.2 Resource type registry",
+  "shape": "table",
+  "marker": "<!-- opena2a-definition: did-resource-types -->",
+  "description": "The resource-type registry (registry generated from this table)."
+}

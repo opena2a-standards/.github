@@ -1,0 +1,9 @@
+{
+  "id": "trust-levels",
+  "repo": "agent-trust-protocol",
+  "file": "ATP-SPEC.md",
+  "heading": "^### 4\\.1 Trust Levels",
+  "shape": "table",
+  "marker": "<!-- opena2a-definition: trust-levels -->",
+  "description": "The five trust levels (0-4) and their names; score 0.0-1.0 with frozen exceptions."
+}

@@ -1,0 +1,9 @@
+{
+  "id": "atx-tbs-exclusions",
+  "repo": "atx-spec",
+  "file": "core.md",
+  "heading": "^#### 1\\.3a\\.2 JCS form",
+  "shape": "prose",
+  "marker": "<!-- opena2a-definition: atx-tbs-exclusions -->",
+  "description": "Fields excluded from the ATX v1.1 to-be-signed projection (the dead field lives here)."
+}

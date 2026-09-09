@@ -1,0 +1,29 @@
+{
+  "id": "hybrid-family-gate",
+  "sweep": "SW-02",
+  "home": "signature-family-gate",
+  "kind": "regex-count",
+  "title": "No spec states a weaker signature rule than the AAP 9.4 family gate.",
+  "params": {},
+  "inspect": [
+    {
+      "repo": "agent-trust-protocol",
+      "files": [
+        "ATP-SPEC.md"
+      ],
+      "regex": "At least one signature MUST verify",
+      "expect": 0,
+      "why": "weaker than the family gate: every declared entry verifies, an ML-DSA-65 entry needs both families"
+    },
+    {
+      "repo": "atx-spec",
+      "files": [
+        "core.md"
+      ],
+      "regex": "A verifier that ignores the ML-DSA-65 signature accepts",
+      "expect": 0,
+      "why": "weaker than the family gate: a declared entry that is ignored is a stripped hybrid"
+    }
+  ],
+  "fix": "ATP 4.4 step 4 and core.md 13 cite AAP 9.4."
+}

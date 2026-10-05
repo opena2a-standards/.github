@@ -69,10 +69,11 @@ Out of scope here, and to be reported to the project that maintains them:
 ## How fixes are published
 
 Published specification text is not edited in place. A fix to a published
-version is issued as a new version under the version rule each specification
-states at the top of its `CHANGELOG.md`, with a changelog entry that names the
-advisory, and the conformance suite gains or corrects the fixture that pins the
-corrected behaviour. Where a specification maintains an errata directory, the
-correction is also filed there as an erratum. A verifier or fixture fix lands
-in the conformance suite together with the fixture that proves it, and the
-shared definitions it touches are re-checked by the spec-drift harness.
+version is issued as a new version under the version rule the specification
+states, where it states one, with an entry that names the advisory in its
+`CHANGELOG.md` where it keeps one, and the conformance suite gains or corrects
+the fixture that pins the corrected behaviour. Where a specification
+maintains an errata directory, the correction is also filed there as an
+erratum. A verifier or fixture fix lands in the conformance suite together
+with the fixture that proves it, and the shared definitions it touches are
+re-checked by the spec-drift harness.

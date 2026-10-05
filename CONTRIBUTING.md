@@ -38,13 +38,14 @@ one without the other for joint review, so a normative change arrives with:
   or a changed expected verdict with the reasoning in the pull request. A
   fixture's expected verdict is never changed to make a verifier pass; a
   verifier that disagrees with a correct fixture is a verifier bug.
-- **The changelog entry.** Every specification keeps a `CHANGELOG.md` in the
-  format it states at its top. The change goes under the unreleased heading,
-  naming the section and the fixture.
-- **The version step.** Each specification's `CHANGELOG.md` states the version
-  rule it uses. Published text is not edited in place; a normative change
-  ships as a new version under that rule, and the pull request says which
-  step it is.
+- **The changelog entry.** Where the specification keeps a `CHANGELOG.md`,
+  the change is recorded there in the format that file uses, under its
+  unreleased heading where it has one, naming the section and the fixture.
+  Where the repository keeps no changelog, the pull request records the
+  change.
+- **The version step.** Published text is not edited in place; a normative
+  change ships as a new version under the version rule the specification
+  states, where it states one, and the pull request says which step it is.
 - **A green drift gate.** Family repositories run the spec-drift harness
   described in [HARNESS.md](./HARNESS.md). If the change moves a shared
   definition, change its home and let the documents that cite it follow;
@@ -59,8 +60,8 @@ layout: where the fixtures and their expected verdicts live, which
 specification version they are pinned to, and how to run the reference
 verifiers or use the fixtures against your own implementation. In general:
 
-1. Clone the conformance repository at the commit or tag its README names for
-   the specification version you implement.
+1. Clone the conformance repository and read, in its README, the
+   specification version its fixtures are pinned to.
 2. Follow the README's section on running the verifiers for the language you
    use, and confirm the reference verifiers reach the expected verdicts.
 3. Run your own verifier over every fixture and compare its verdict with the

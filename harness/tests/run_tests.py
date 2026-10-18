@@ -249,7 +249,7 @@ def build_clean(root: Path) -> None:
     write(root, "atx-conformance/fixtures/baseline-valid.json", FIXTURE)
     write(root, "atx-conformance/conformance.json", CONFORMANCE)
     write(root, "atx-conformance/verifiers/python/verify.py", VERIFY_PY)
-    write(root, "atx-conformance/verifiers/go/verify.go", VERIFY_GO)
+    write(root, "atx-conformance/verifiers/go/verifier/verify.go", VERIFY_GO)
     write(root, "agent-authorization-protocol/AAP-SPEC.md", AAP)
     write(root, "agent-authorization-protocol/AAP-BROKER-PROFILE.md", BROKER)
     write(root, "did-method-opena2a/did-method-opena2a.md", DID)

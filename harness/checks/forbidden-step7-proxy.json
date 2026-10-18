@@ -18,7 +18,8 @@
     {
       "repo": "atx-conformance",
       "files": [
-        "verifiers/go/verify.go"
+        "verifiers/go/verify.go",
+        "verifiers/go/verifier/verify.go"
       ],
       "regex": "len\\(a\\.IssuerChain\\)\\s*<\\s*2",
       "expect": 0,
